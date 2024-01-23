@@ -13,24 +13,9 @@
 </html>
 <script>
     document.getElementById("redirectButton").onclick = function() {
-        // Open a new tab
-        window.location.href = window.open('https://api.instagram.com/oauth/authorize?client_id=735576571451726&redirect_uri=https://anu381.github.io/temporary-website/&scope=user_profile,user_media&response_type=code');
-        // Wait for the new tab to load
-        // newTab.onload = function() {
-        //     // Post a message to the new tab
-        //     console.log("han bhai");
-        //     newTab.postMessage('Requesting URL', 'https://anu381.github.io');
-        // };
-        // Listen for the response from the new tab
-        window.addEventListener('message', function(event) {
-            console.log("hello dear", event);
-            if (event.origin === 'https://anu381.github.io') {
-                console.log("hello dear i am here", event);
-                // Access the URL from the second tab
-                //   var secondTabURL = event.data;
-                //   console.log('URL from second tab:', secondTabURL);
-            }
-        });
+        // Redirect the current window to the Instagram authorization URL
+        window.location.href = 'https://api.instagram.com/oauth/authorize?client_id=735576571451726&redirect_uri=https://anu381.github.io/temporary-website/&scope=user_profile,user_media&response_type=code';
     };
     console.log(window.location.href);
 </script>
+
