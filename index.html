@@ -6,7 +6,30 @@
     <title>Temporary Website</title>
 </head>
 <body>
+    <button id="redirectButton">Click to get Code</button>
     <h1>Welcome to My Temporary Website</h1>
     <p>This is just a placeholder for testing purposes.</p>
 </body>
 </html>
+<script>
+    document.getElementById("redirectButton").onclick = function() {
+        // Open a new tab
+        var newTab = window.open('https://api.instagram.com/oauth/authorize?client_id=735576571451726&redirect_uri=https://anu381.github.io/temporary-website/&scope=user_profile,user_media&response_type=code');
+        // Wait for the new tab to load
+        newTab.onload = function() {
+            // Post a message to the new tab
+            console.log("han bhai");
+            newTab.postMessage('Requesting URL', 'https://anu381.github.io');
+        };
+        // Listen for the response from the new tab
+        window.addEventListener('message', function(event) {
+            console.log("hello dear", event);
+            if (event.origin === 'https://anu381.github.io') {
+                console.log("hello dear i am here", event);
+                // Access the URL from the second tab
+                //   var secondTabURL = event.data;
+                //   console.log('URL from second tab:', secondTabURL);
+            }
+        });
+    };
+</script>
